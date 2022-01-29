@@ -14,4 +14,8 @@ public class ChartApplication {
 		return "hello";
 	}
 
+	public String commit(){
+		return "commiting the value";
+	}
+
 }
