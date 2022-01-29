@@ -20,7 +20,7 @@
         function drawChart() {
             //create the data table
             var data = new google.visualization.DataTable();
-            data.addColumn('String', 'Topping');
+            data.addColumn('string', "Topping");
             data.addColumn('number', 'Slices');
             data.addRows([
                 ['Mushrooms', 3],
@@ -34,13 +34,26 @@
 
             //set chart options
 
-            var options = {'title':'How much Pizza I Ate Last Night',
-            'width':400,
-            'height':300};
+            var options = {
+                'title': 'How much Pizza I Ate Last Night',
+                'width': 400,
+                'height': 400
+            };
 
             //instantiate and draw our chart ,passing in some options
-            var chart = new google.visualization.PieChart(docuemnt.getElementById('chart_div'));
-            chart.draw(data,options);
+            var piechart = new google.visualization.PieChart(document.getElementById('pchart_div'));
+            var barchart = new google.visualization.BarChart(document.getElementById('bchart_div'));
+            var linegraph = new google.visualization.LineChart(document.getElementById('linegraph'));
+            var histogram = new google.visualization.Histogram(document.getElementById('histogram'));
+            var areachart = new google.visualization.AreaChart(document.getElementById('areachart'));
+            // var bubblechart = new google.visualization.BubbleChart(document.getElementById('bubblechart'));
+
+            piechart.draw(data, options);
+            barchart.draw(data, options);
+            linegraph.draw(data, options);
+            histogram.draw(data, options);
+            areachart.draw(data, options);
+            // bubblechart.draw(data, options);
         }
 
     </script>
@@ -48,8 +61,19 @@
 
 <body>
     <h1>Google charts With Thymeleaf</h1>
+    <div style="display: flex;">
+        <div id="pchart_div"></div>
+        <div id="bchart_div"></div>
+    </div>
+    <div style="display: flex;">
+        <div id="linegraph"></div>
+        <div id="histogram"></div>
+    </div>
+    <div style="display: flex;">
+        <div id="areachart"></div>
+        <!-- <div id="bubblechart"></div> -->
+    </div>
 
-    <div id="chart_div"></div>
 </body>
 
 </html>
