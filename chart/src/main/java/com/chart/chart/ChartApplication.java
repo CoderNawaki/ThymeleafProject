@@ -10,4 +10,8 @@ public class ChartApplication {
 		SpringApplication.run(ChartApplication.class, args);
 	}
 
+	public String hello(){
+		return "hello";
+	}
+
 }
