@@ -1,0 +1,79 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Google Charts With Thymeleaf</title>
+    <!-- loading the ajax api -->
+
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        //load the visualization api and the corechart package
+        google.charts.load('current', { 'packages': ['corechart'] });
+
+        //set a callback to run when the Google visualization api is loaded
+        google.charts.setOnLoadCallback(drawChart);
+
+        //callback that creates and populates a data table
+        //instantiates the pie chart, passes in the data and 
+        //draws it.
+
+        function drawChart() {
+            //create the data table
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', "Topping");
+            data.addColumn('number', 'Slices');
+            data.addRows([
+                ['Mushrooms', 3],
+                ['Onions', 1],
+                ['Olives', 2],
+                ['zucchini', 1],
+                ['Pepperoni', 2],
+
+            ]);
+
+
+            //set chart options
+
+            var options = {
+                'title': 'How much Pizza I Ate Last Night',
+                'width': 400,
+                'height': 400
+            };
+
+            //instantiate and draw our chart ,passing in some options
+            var piechart = new google.visualization.PieChart(document.getElementById('pchart_div'));
+            var barchart = new google.visualization.BarChart(document.getElementById('bchart_div'));
+            var linegraph = new google.visualization.LineChart(document.getElementById('linegraph'));
+            var histogram = new google.visualization.Histogram(document.getElementById('histogram'));
+            var areachart = new google.visualization.AreaChart(document.getElementById('areachart'));
+            // var bubblechart = new google.visualization.BubbleChart(document.getElementById('bubblechart'));
+
+            piechart.draw(data, options);
+            barchart.draw(data, options);
+            linegraph.draw(data, options);
+            histogram.draw(data, options);
+            areachart.draw(data, options);
+            // bubblechart.draw(data, options);
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Google charts With Thymeleaf</h1>
+    <div style="display: flex;">
+        <div id="pchart_div"></div>
+        <div id="bchart_div"></div>
+    </div>
+    <div style="display: flex;">
+        <div id="linegraph"></div>
+        <div id="histogram"></div>
+    </div>
+    <div style="display: flex;">
+        <div id="areachart"></div>
+        <!-- <div id="bubblechart"></div> -->
+    </div>
+
+</body>
+
+</html>
