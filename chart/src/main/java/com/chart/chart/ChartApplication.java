@@ -18,4 +18,11 @@ public class ChartApplication {
 		return "commiting the value";
 	}
 
+	public void display(){
+		System.out.println("we are displaying methods");
+	}
+	public static void display(int a ,int b){
+		System.out.println("we are displaying methods");
+	}
+
 }
