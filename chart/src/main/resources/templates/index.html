@@ -6,7 +6,7 @@
     <!-- loading the ajax api -->
 
     <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script>
+    <script th:inline="javascript">
         //load the visualization api and the corechart package
         google.charts.load('current', { 'packages': ['corechart'] });
 
@@ -22,14 +22,19 @@
             var data = new google.visualization.DataTable();
             data.addColumn('string', "Topping");
             data.addColumn('number', 'Slices');
-            data.addRows([
-                ['Mushrooms', 3],
-                ['Onions', 1],
-                ['Olives', 2],
-                ['zucchini', 1],
-                ['Pepperoni', 2],
+            /** this is for client side data*/
+            // data.addRows([
+            //     ['Mushrooms', 3],
+            //     ['Onions', 1],
+            //     ['Olives', 2],
+            //     ['zucchini', 1],
+            //     ['Pepperoni', 2],
 
-            ]);
+            // ]);
+
+            /**from server side data is calling
+             * other is not changed other than that**/
+            data.addRows([[${ chartData }]]);
 
 
             //set chart options
