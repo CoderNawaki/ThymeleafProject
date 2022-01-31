@@ -1,4 +1,4 @@
-package com.chart.controllers;
+package com.chart.Controll;
 
 import java.util.List;
 import java.util.Random;
@@ -18,16 +18,15 @@ public class ChartController {
         return "index";
     }
 
-    //**adding data in controller to show in index.html through model */
-    private List<List<Object>>getChartData(){
+    // **adding data in controller to show in index.html through model */
+    private List<List<Object>> getChartData() {
         return List.of(
 
-            List.of("Mushrooms", RANDOM.nextInt(5)),
-            List.of("Onions", RANDOM.nextInt(5)),
-            List.of("Olives", RANDOM.nextInt(5)),
-            List.of("Zucchini", RANDOM.nextInt(5)),
-            List.of("Pepperment", RANDOM.nextInt(5))
-        );
+                List.of("Mushrooms", RANDOM.nextInt(5)),
+                List.of("Onions", RANDOM.nextInt(5)),
+                List.of("Olives", RANDOM.nextInt(5)),
+                List.of("Zucchini", RANDOM.nextInt(5)),
+                List.of("Pepperment", RANDOM.nextInt(5)));
     }
 
 }
