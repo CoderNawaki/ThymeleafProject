@@ -14,9 +14,7 @@ public class User {
     private String givenName;
     private String familyName;
 
-    protected User() {
-
-    }
+    protected User() {}
 
     public User(String givenName, String familyName) {
         this.givenName = givenName;
