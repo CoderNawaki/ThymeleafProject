@@ -26,7 +26,7 @@ public class ChartController {
                 List.of("Onions", RANDOM.nextInt(5)),
                 List.of("Olives", RANDOM.nextInt(5)),
                 List.of("Zucchini", RANDOM.nextInt(5)),
-                List.of("Pepperment", RANDOM.nextInt(5)));
+                List.of("Pepperment", RANDOM.nextInt(5)),
                 List.of("Chillies", RANDOM.nextInt(5)));
     }
 
