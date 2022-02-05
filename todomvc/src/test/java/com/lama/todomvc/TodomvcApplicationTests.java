@@ -11,5 +11,10 @@ class TodomvcApplicationTests {
 		
 		System.out.println("our testing for github");
 	}
+	
+	@Test
+	void add() {
+		System.out.println("check test added to test");
+	}
 
 }
