@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>This going to be home </title>
-</head>
-<body>
-	<h1>Welcome to TodoMvc Example</h1>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org" lang="en">
 
-	<div id="todo">
-		<p>It is really amazing home </p>
-	</div>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Template.Todomvc</title>
+    <link rel="stylesheet" th:href="@{/webjars/todomvc-common/base.css}">
+    <link rel="stylesheet" th:href="@{/webjars/todomvc-app-css/index.css}">
+
+</head>
+
+<body>
+    <section class="todoapp">
+        <header class="header">
+            <h1>Todos</h1>
+            <form th:action="@{/}" method="post" th:object="${item}">
+                <input  class="new-todo" placeholder="What needs to be don?" autofocus th:field="*{title}">  
+            </form>
+        </header>
+    </section>
 </body>
 </html>
