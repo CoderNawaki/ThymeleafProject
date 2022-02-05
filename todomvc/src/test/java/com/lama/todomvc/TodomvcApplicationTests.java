@@ -8,6 +8,8 @@ class TodomvcApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
+		System.out.println("our testing for github");
 	}
 
 }
