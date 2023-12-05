@@ -28,6 +28,21 @@ xmlns:th="http://www.thymeleaf.org" lang="en">
     <ul id="taskList"></ul>
 
     <script>
+        function createListItem(task){
+            const listItem = document.createElement('li');
+            listItem.textContent= task.task;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent='Delete';
+            deleteButton.onclick=()=>deleteTask(task.id);
+
+            listItem.appendChild(deleteButton);
+
+            return listItem;
+        }
+
+
+
         function fetchTasks(){
             fetch('/api/todo')
             .then(response=>response.json())
@@ -65,6 +80,23 @@ xmlns:th="http://www.thymeleaf.org" lang="en">
 
 
             }
+        }
+
+        function deleteTask(id){
+            fetch(`/api/todo/${id}`.{
+                method:'DELETE',
+            })
+            .then(response=>{
+                if(response.ok){
+                    console.log('Task deleted successfully.');
+                    fetchTasks();
+                }else{
+                    console.error('Error deleting task:',response.status);
+
+                }
+            })
+            .catch(error=>console.error('Error deleting task:',error));
+            
         }
 
         //fetch tasks when the page loads

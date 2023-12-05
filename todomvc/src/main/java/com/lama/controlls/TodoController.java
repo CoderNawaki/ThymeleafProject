@@ -24,5 +24,16 @@ public class TodoController {
 		return todoItemRepository.save(todoItem);
 	}
 	
-//add other crud method as needed.
+	//add other crud method as needed.
+
+	@DeleteMapping("/{id}")
+	public  ResponseEntity<Void>deleteTodoItem(@PathVariable Long id){
+		if(todoItemRepository.existsById(id)){
+			todoItemRepository.deleteById(id);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+		}else{
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
 }
