@@ -6,16 +6,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
-@Controller
+@RestController
+@RequestMapping("/api/todo")
 public class TodoController {
 	
 
 	@Autowired
-	private ApplicationContext context;
-	
-	
-	@GetMapping("/todo")
-	public String getHome() {
-		return "home";
+	private TodoItemRepository todoItemRepository;
+
+	@GetMapping
+	public List<TodoItem> getAllTodoItems(){
+		return todoItemRepository.findAll();
 	}
+
+	@PostMapping
+	public TodoItem addTodoItem(@RequestBody TodoItem todoItem){
+		return todoItemRepository.save(todoItem);
+	}
+	
+//add other crud method as needed.
 }

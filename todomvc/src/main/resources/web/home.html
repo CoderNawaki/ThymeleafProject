@@ -6,9 +6,7 @@ xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Template.Todomvc</title>
-    <link rel="stylesheet" th:href="@{/webjars/todomvc-common/base.css}">
-    <link rel="stylesheet" th:href="@{/webjars/todomvc-app-css/index.css}">
+    <title>Todo App</title>
 
 </head>
 
@@ -21,5 +19,59 @@ xmlns:th="http://www.thymeleaf.org" lang="en">
             </form>
         </header>
     </section>
+    <div>
+        <label for="taskInput">New Task:</label>
+        <input type="text" id="taskInput"/>
+        <button onclick="addTask()">Add Task</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <script>
+        function fetchTasks(){
+            fetch('/api/todo')
+            .then(response=>response.json())
+            .then(data=>{
+                const taskList = document.getElementById('taskList');
+                taskList.innerHTML='';
+                data.forEach(task=>{
+                    const listItem = document.createElement('li');
+                    listItem.textContent=task.task;
+                    taskList.appendChild(listItem);
+                });
+            })
+            .catch(error=>console.error('Error fetching tasks:',error));
+        }
+
+        function addTask(){
+            const taskInput = document.getElementById('taskInput');
+            const task = taskInput.Value;
+
+            if(task.trim() !==''){
+                fetch('/api/todo',{
+                    method:'POST',
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify({task})
+                })
+                .then(response=>response.json())
+                .then(data=>{
+                    console.log('Task added:',data);
+                    taskInput.value='';
+                    fetchTasks();
+                })
+                .catch(error=>console.error('Error adding task:',error));
+
+
+            }
+        }
+
+        //fetch tasks when the page loads
+        document.addEventListener('DOMContentLoaded',()=>{
+            fetchTasks();
+        });
+    </script>
+ 
 </body>
 </html>
